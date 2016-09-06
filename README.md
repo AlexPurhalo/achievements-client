@@ -5,5 +5,5 @@
 </ul>
 <h3>Progress</h3>
 <ul>
-	<li>Check that now we have root page with App as layout component</li>
+	<li>Check that now as index route we have Persons component</li>
 </ul>

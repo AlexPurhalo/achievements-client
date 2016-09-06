@@ -4,8 +4,11 @@ import { Route, IndexRoute } from 'react-router';
 
 // Components import
 import App from './components/app';
+import Persons from './components/persons/index';
 
 // Routes definition
 export default (
-	<Route path="/" component={App} />
+	<Route path="/" component={App}>
+		<IndexRoute component={Persons} />
+	</Route>
 );
