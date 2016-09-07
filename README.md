@@ -2,8 +2,9 @@
 <ul>
 	<li>$ sudo npm install</li>
 	<li>$ npm run start</li>
+	<li>$ npm run test:watch</li>
 </ul>
 <h3>Progress</h3>
 <ul>
-	<li>Sign in with existing account and check that authenticated flag now is true in console</li>
+	<li>Check the test for UNAUTH_USER action type</li>
 </ul>

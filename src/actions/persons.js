@@ -3,7 +3,7 @@ import axios from 'axios';
 import { browserHistory } from 'react-router';
 
 // Import of action types
-import { FETCH_PERSONS, AUTH_USER } from './types';
+import { FETCH_PERSONS, AUTH_USER, UNAUTH_USER } from './types';
 
 // Server root path
 const ROOT_URL = 'http://localhost:3000/';
@@ -32,4 +32,12 @@ export function signInUser({ email, password }) {
 				browserHistory.push('/');
 			});
 	};
+}
+
+// Changes authenticated flag to false and removes JWT token
+export function signOutUser() {
+	localStorage.removeItem('token');
+	browserHistory.push('/');
+
+	return { type: UNAUTH_USER };
 }
