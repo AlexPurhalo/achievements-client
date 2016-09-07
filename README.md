@@ -5,6 +5,5 @@
 </ul>
 <h3>Progress</h3>
 <ul>
-	<li>Go to path "persons/new" path</li>
-	<li>Find the "Create a new person" text</li>
+	<li>See that in persons list page and in new person page we have "Here is header" text</li>
 </ul>
