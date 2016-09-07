@@ -21,6 +21,13 @@ export default class Header extends Component {
 					activeClassName="active">
 					Create Account
 				</Link>
+			</li>,
+			<li className="nav-item">
+				<Link
+					to="sign_in"
+					className="nav-link">
+					Sign In
+				</Link>
 			</li>
 		]
 	}

@@ -5,5 +5,5 @@
 </ul>
 <h3>Progress</h3>
 <ul>
-	<li>on persons new page find form with email and password field</li>
+	<li>Go to sign_in path and find "Here person gonna have ability to sign in" text</li>
 </ul>
