@@ -6,8 +6,7 @@ import { reduxForm } from 'redux-form'
 import { signInUser } from '../../actions/persons';
 
 // Component for session creating
-class SignIn extends Component {
-	// User's input handling and using function for request creating
+class SignIn extends Component {// User's input handling and using function for request creating
 	handleFormSubmit({ email, password }) {
 		console.log(email, password);
 		this.props.signInUser({ email, password });

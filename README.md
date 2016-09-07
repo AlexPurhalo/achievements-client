@@ -5,7 +5,5 @@
 </ul>
 <h3>Progress</h3>
 <ul>
-	<li>Sign in to exist account, example: aladin228@mail.com, abagalamaga</li>
-	<li>In response check access_token, email, id and other data</li>
-	<li>Use incorrect data and as outpyt you will get: "Invalid password or email"</li>
+	<li>Sign in to existing account and check that you was redirected to root page/li>
 </ul>

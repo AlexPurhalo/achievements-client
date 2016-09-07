@@ -1,8 +1,9 @@
 // Node modules import
 import axios from 'axios';
+import { browserHistory } from 'react-router';
 
 // Import of action types
-import { FETCH_PERSONS } from './types';
+import { FETCH_PERSONS, AUTH_USER } from './types';
 
 // Server root path
 const ROOT_URL = 'http://localhost:3000/';
@@ -19,7 +20,12 @@ export function fetchPersons() {
 
 // Creates session
 export function signInUser({ email, password }) {
-	return function() {
-		axios.post(`${ROOT_URL}/sign_in`, { email, password }); // email: email, password: password
+	return function(dispatch) {
+		// Sends request to get the data like access_token, id, etc...
+		axios.post(`${ROOT_URL}/sign_in`, { email, password }) // email: email, password: password
+			.then(response => {
+				// Redirects to	root path
+				browserHistory.push('/');
+			});
 	};
 }
