@@ -1,12 +1,16 @@
 // Node modules import
 import React, { Component } from 'react';
-import { reduxForm } from 'redux-form' //
+import { reduxForm } from 'redux-form'
+
+// Actions import
+import { signInUser } from '../../actions/persons';
 
 // Component for session creating
 class SignIn extends Component {
-	// User's input handling
+	// User's input handling and using function for request creating
 	handleFormSubmit({ email, password }) {
 		console.log(email, password);
+		this.props.signInUser({ email, password });
 	}
 
 	// JSX returning
@@ -47,4 +51,4 @@ class SignIn extends Component {
 export default reduxForm({
 	form: 'signin',
 	fields: ['email', 'password']
-})(SignIn);
+}, null, { signInUser })(SignIn);
