@@ -5,5 +5,5 @@
 </ul>
 <h3>Progress</h3>
 <ul>
-	<li>Sign in to existing account and check access_token in localstorage</li>
+	<li>Sign in with existing account and check that authenticated flag now is true in console</li>
 </ul>
