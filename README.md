@@ -5,5 +5,5 @@
 </ul>
 <h3>Progress</h3>
 <ul>
-	<li>Go to sign_in path and find "Here person gonna have ability to sign in" text</li>
+	<li>Go to sign_in path and find form with fields and button</li>
 </ul>
