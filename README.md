@@ -5,5 +5,5 @@
 </ul>
 <h3>Progress</h3>
 <ul>
-	<li>Sign in to existing account and check that you was redirected to root page/li>
+	<li>Sign in to existing account and check access_token in localstorage</li>
 </ul>
