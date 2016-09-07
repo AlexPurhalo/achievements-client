@@ -1,9 +1,15 @@
 // Node modules import
 import React, { Component } from 'react'
 import { Link, IndexLink } from 'react-router';
+import { connect } from 'react-redux';
+import { signOutUser } from '../actions/persons';
 
 // Shows navigation bar
-export default class Header extends Component {
+class Header extends Component {
+	handleClick() {
+		this.props.signOutUser()
+	}
+
 	renderLinks() {
 		return [
 			<li className="nav-item" key={1}>
@@ -22,11 +28,19 @@ export default class Header extends Component {
 					Create Account
 				</Link>
 			</li>,
-			<li className="nav-item">
+			<li className="nav-item" key={3}>
 				<Link
 					to="sign_in"
 					className="nav-link">
 					Sign In
+				</Link>
+			</li>,
+			<li className="nav-item" key={4}>
+				<Link
+					onClick={this.handleClick.bind(this)}
+					to="/"
+					className="nav-link">
+					Sign Out
 				</Link>
 			</li>
 		]
@@ -34,6 +48,7 @@ export default class Header extends Component {
 
 	// JSX rendering
 	render() {
+		console.log(`authenticated boolean: ${this.props.authenticated}`);
 		return (
 			<div className="header">
 				<nav className="navbar navbar-light">
@@ -46,3 +61,9 @@ export default class Header extends Component {
 		);
 	}
 }
+
+function mapStateToProps(state) {
+	return { authenticated: state.auth.authenticated }
+}
+
+export default connect(mapStateToProps, { signOutUser })(Header);

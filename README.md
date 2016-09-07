@@ -6,5 +6,7 @@
 </ul>
 <h3>Progress</h3>
 <ul>
-	<li>Check the test for UNAUTH_USER action type</li>
+	<li>Click on Sign Out link and you gonna redirected to root path</li>
+	<li>Your JWT token should be deleted from localStorage</li>
+	<li>Authentication authenticated boolean should be changed to false, checkout console</li>
 </ul>
