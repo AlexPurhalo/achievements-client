@@ -6,10 +6,7 @@
 </ul>
 <h3>Progress</h3>
 <ul>
-	<li>Go to sign_up page and create a person</li>
-	<li>Check POST request with 200 status</li>
-	<li>In response you gonna get user's data as access_token, email, id, etc...</li>
-	<li>Confirm person existing in database</li>
-	<li>Check that authenticated boolean has changed to true</li>
-	<li>Token was setted to localSotrage</li>
+	<li>Sign in to existing account or create a new</li>
+	<li>Check that authenticated after sign in is true</li>
+	<li>Reload page and see that boolean hasn't changed, still true untill we sign out</li>
 </ul>
