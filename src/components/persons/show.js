@@ -10,9 +10,11 @@ class Person extends Component {
 
 	render() {
 		// console.log(this.props.person);
+		const token = localStorage.getItem('token');
 		return (
 			<div className="single-user-page">
 				User: <strong>{this.props.person.email}</strong>
+				<div>	{this.props.person.access_token === token ? (<div>Have access</div>) : (<div>Sorry, you can't do this</div>)}</div>
 			</div>
 		);
 	}
