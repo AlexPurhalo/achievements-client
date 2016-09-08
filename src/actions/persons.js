@@ -6,17 +6,7 @@ import { browserHistory } from 'react-router';
 import { FETCH_PERSONS, AUTH_USER, UNAUTH_USER } from './types';
 
 // Server root path
-const ROOT_URL = 'http://localhost:3000/';
-
-// Get request fetch accounts from server
-export function fetchPersons() {
-	const request = axios.get(`${ROOT_URL}/persons`);
-
-	return {
-		type: FETCH_PERSONS,
-		payload: request
-	}
-}
+const ROOT_URL = 'http://localhost:3000';
 
 // Creates session
 export function signInUser({ email, password }) {
@@ -50,5 +40,13 @@ export function createPerson({email, password}) {
 				localStorage.setItem('token', response.data.access_token);
 				browserHistory.push('/')
 			})
+	}
+}
+
+// Get request fetch accounts from server
+export function fetchPersons() {
+	return function() {
+		axios.get(`${ROOT_URL}/users`)
+			.then(response => { console.log(response) });
 	}
 }
