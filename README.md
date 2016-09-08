@@ -6,5 +6,5 @@
 </ul>
 <h3>Progress</h3>
 <ul>
-	<li>Awesome, I've finished with data fetching, look at this pretty users list :3</li>
+	<li>Checkout sindle person page, as path use persons/:id</li>
 </ul>
