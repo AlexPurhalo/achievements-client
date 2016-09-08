@@ -18,8 +18,8 @@ class Persons extends Component {
 			<div className="persons-list">
 				<ul className="list-group">
 					{this.props.persons.map(person =>
-						<Link to={`persons/${person.id}`}>
-							<li className="list-group-item" key={person.id}>{person.email}</li>
+						<Link to={`persons/${person.id}`} key={person.id}>
+							<li className="list-group-item">{person.email}</li>
 						</Link>
 					)}
 				</ul>
