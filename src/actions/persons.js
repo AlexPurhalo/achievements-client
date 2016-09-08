@@ -58,10 +58,13 @@ export function fetchPersons() {
 
 // Get request to fetch data about certain person
 export function fetchSinglePerson(id) {
-	return function() {
+	return function(dispatch) {
 		axios.get(`${ROOT_URL}/users/${id}`)
 			.then(response => {
-				console.log(response)
+				dispatch({
+					type: FETCH_SINGLE_PERSON,
+					payload: response.data
+				})
 			})
 	}
 }

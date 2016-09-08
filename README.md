@@ -7,5 +7,5 @@
 <h3>Progress</h3>
 <ul>
 	<li>Go to page of single person</li>
-	<li>Check object that is response in console, check its data</li>
+	<li>Check rendering email of this user</li>
 </ul>

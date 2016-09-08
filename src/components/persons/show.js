@@ -9,8 +9,18 @@ class Person extends Component {
 	}
 
 	render() {
-		return <div>Single post page with {this.props.params.id} id</div>
+		// console.log(this.props.person);
+		return (
+			<div className="single-user-page">
+				User: <strong>{this.props.person.email}</strong>
+			</div>
+		);
 	}
 }
 
-export default connect(null, { fetchSinglePerson })(Person);
+// Sets as property needed state
+function mapStateToProps(state) {
+	return { person: state.persons.single_person }
+}
+
+export default connect(mapStateToProps, { fetchSinglePerson })(Person);
