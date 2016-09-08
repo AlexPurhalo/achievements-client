@@ -3,7 +3,7 @@ import axios from 'axios';
 import { browserHistory } from 'react-router';
 
 // Import of action types
-import { FETCH_PERSONS, AUTH_USER, UNAUTH_USER } from './types';
+import { FETCH_PERSONS, FETCH_SINGLE_PERSON, AUTH_USER, UNAUTH_USER } from './types';
 
 // Server root path
 const ROOT_URL = 'http://localhost:3000';
@@ -53,5 +53,15 @@ export function fetchPersons() {
 					payload: response.data.users
 				})
 			});
+	}
+}
+
+// Get request to fetch data about certain person
+export function fetchSinglePerson(id) {
+	return function() {
+		axios.get(`${ROOT_URL}/users/${id}`)
+			.then(response => {
+				console.log(response)
+			})
 	}
 }

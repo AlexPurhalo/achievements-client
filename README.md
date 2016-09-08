@@ -6,5 +6,6 @@
 </ul>
 <h3>Progress</h3>
 <ul>
-	<li>Try link come to single person by one of the links on the persons list page/li>
+	<li>Go to page of single person</li>
+	<li>Check object that is response in console, check its data</li>
 </ul>
