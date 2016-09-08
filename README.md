@@ -6,5 +6,5 @@
 </ul>
 <h3>Progress</h3>
 <ul>
-	<li>Checkout sindle person page, as path use persons/:id</li>
+	<li>Try link come to single person by one of the links on the persons list page/li>
 </ul>

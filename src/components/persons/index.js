@@ -1,6 +1,7 @@
 // Node modules import
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 // Actions import
 import { fetchPersons } from '../../actions/persons';
@@ -17,7 +18,9 @@ class Persons extends Component {
 			<div className="persons-list">
 				<ul className="list-group">
 					{this.props.persons.map(person =>
-						<li className="list-group-item" key={person.id}>{person.email}</li>
+						<Link to={`persons/${person.id}`}>
+							<li className="list-group-item" key={person.id}>{person.email}</li>
+						</Link>
 					)}
 				</ul>
 			</div>
