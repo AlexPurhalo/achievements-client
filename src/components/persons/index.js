@@ -12,8 +12,22 @@ class Persons extends Component {
 	}
 
 	render() {
-		return <div className="persons-list">There gonna be list of people!</div>;
+		console.log(this.props.persons);
+		return (
+			<div className="persons-list">
+				<ul className="list-group">
+					{this.props.persons.map(person =>
+						<li className="list-group-item" key={person.id}>{person.email}</li>
+					)}
+				</ul>
+			</div>
+		);
 	}
 }
 
-export default connect(null, { fetchPersons })(Persons);
+// Transforms states to properties
+function mapStateToProps(state) {
+	return { persons: state.persons.all_persons }
+}
+
+export default connect(mapStateToProps, { fetchPersons })(Persons);

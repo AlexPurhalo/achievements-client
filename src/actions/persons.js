@@ -45,8 +45,13 @@ export function createPerson({email, password}) {
 
 // Get request fetch accounts from server
 export function fetchPersons() {
-	return function() {
+	return function(dispatch) {
 		axios.get(`${ROOT_URL}/users`)
-			.then(response => { console.log(response) });
+			.then(response => {
+				dispatch({
+					type: FETCH_PERSONS,
+					payload: response.data.users
+				})
+			});
 	}
 }
