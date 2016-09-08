@@ -23,7 +23,7 @@ class Header extends Component {
 				</li>,
 				<li className="nav-item" key={2}>
 					<Link
-						to="persons/new"
+						to="/persons/sign_up"
 						className="nav-link"
 						activeClassName="active">
 						Create Account
@@ -31,7 +31,7 @@ class Header extends Component {
 				</li>,
 				<li className="nav-item" key={3}>
 					<Link
-						to="sign_in"
+						to="/persons/sign_in"
 						className="nav-link">
 						Sign In
 					</Link>

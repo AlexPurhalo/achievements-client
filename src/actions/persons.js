@@ -41,3 +41,14 @@ export function signOutUser() {
 
 	return { type: UNAUTH_USER };
 }
+
+export function createPerson({email, password}) {
+	return function(dispatch) {
+		axios.post(`${ROOT_URL}/users`, { user: {email, password} })
+			.then(response => {
+				dispatch({type: AUTH_USER });
+				localStorage.setItem('token', response.data.access_token);
+				browserHistory.push('/')
+			})
+	}
+}

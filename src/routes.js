@@ -12,7 +12,7 @@ import SignIn from './components/auth/sign_in';
 export default (
 	<Route path="/" component={App}>
 		<IndexRoute component={Persons} />
-		<Route path="persons/new" component={NewPerson} />
-		<Route path="sign_in" component={SignIn} />
+		<Route path="persons/sign_up" component={NewPerson} />
+		<Route path="persons/sign_in" component={SignIn} />
 	</Route>
 );
