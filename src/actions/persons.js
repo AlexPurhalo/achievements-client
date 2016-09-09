@@ -3,7 +3,13 @@ import axios from 'axios';
 import { browserHistory } from 'react-router';
 
 // Import of action types
-import { FETCH_PERSONS, FETCH_SINGLE_PERSON, AUTH_USER, UNAUTH_USER, DELETE_ACCOUNT } from './types';
+import {
+	FETCH_PERSONS,
+	FETCH_SINGLE_PERSON,
+	AUTH_USER,
+	UNAUTH_USER,
+	UPDATE_ACCOUNT,
+	DELETE_ACCOUNT } from './types';
 
 // Server root path
 const ROOT_URL = 'http://localhost:3000';
@@ -79,4 +85,15 @@ export function deletePerson(id) {
 				browserHistory.push('/persons/sign_in')
 			);
 	}
+}
+
+// Put request to update person's info
+export function updatePersonData(id, {email, password}) {
+	return function(dispatch) {
+		axios.put(`${ROOT_URL}/users/${id}`, { email, password })
+			.then(
+				dispatch({ type: UPDATE_ACCOUNT} ),
+				browserHistory.push(`/persons/${id}`)
+			);
+	};
 }

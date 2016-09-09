@@ -1,63 +1,49 @@
 // Node modules import
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
-import { fetchSinglePerson } from '../../actions/persons';
 
+// Actions import
+import { updatePersonData } from '../../actions/persons';
+
+// Changes data about user
 class EditPerson extends Component {
-	componentWillMount() {
-		this.props.fetchSinglePerson(this.props.params.id);
-	}
-
-	onDeleteClick() {
-		this.props.deletePerson(this.props.params.id);
+	handleFormSubmit({email, password}) {
+		console.log(email, password);
+		this.props.updatePersonData(this.props.params.id, {email: email, password: password});
 	}
 
 	render() {
-		console.log(this.props.person);
+		const { handleSubmit, fields: { email, password} } = this.props;
+
 		return (
-			<div className="person-edit-container">
-				<form>
-					<h4>Edit person's data</h4>
-					<fieldset className="form-group">
-						<label>Email</label>
-						<input
-							placeholder={this.props.person.email}
-							className="form-control"
-							type="text"/>
-					</fieldset>
-					<fieldset className="form-group">
-						<label>Password</label>
-						<input
-							placeholder="**************"
-							className="form-control"
-							type="password"/>
-					</fieldset>
-					<button
-						type="submit"
-						className="btn btn-primary">
-						Update
-					</button>
-				</form>
-				<br/><br/>
-				<div className="person-delete-container">
-					<h4>Delete account</h4>
-					<button
-						onClick={this.onDeleteClick.bind(this)}
-						className="btn btn-danger">
-						Destroy
-					</button>
-				</div>
-			</div>
+			<form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+				<h4>Edit person's data</h4><br/>
+				<fieldset className="form-group">
+					<label>Email</label>
+					<input
+						{...email}
+						className="form-control"
+						type="text"/>
+				</fieldset>
+				<fieldset className="form-group">
+					<label>Password</label>
+					<input
+						{...password}
+						className="form-control"
+						type="password"/>
+				</fieldset>
+				<br/>
+				<button
+					type="submit"
+					className="btn btn-primary">
+					Update
+				</button>
+			</form>
 		);
 	}
 }
 
-// Sets as property needed state
-function mapStateToProps(state) {
-	return { person: state.persons.single_person }
-}
-
 export default reduxForm({
-	form: 'NewPersonForm',
+	form: 'EditPersonForm',
 	fields: ['email', 'password']
-}, mapStateToProps, { fetchSinglePerson })(EditPerson);
+}, null, { updatePersonData })(EditPerson);
