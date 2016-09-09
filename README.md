@@ -7,5 +7,5 @@
 <h3>Progress</h3>
 <ul>
 	<li>Go by following path: persons/:id/edit </li>
-	<li>Find page with "Edit Page" text</li>
+	<li>Checkout form with that hold user's email in input</li>
 </ul>
