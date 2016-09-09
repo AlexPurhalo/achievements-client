@@ -72,7 +72,7 @@ export function fetchSinglePerson(id) {
 // Delete request to destroy account from other
 export function deletePerson(id) {
 	return function(dispatch) {
-		axios.delete(`${ROOT_URL}/users/${id}`)
+		axios.delete(`${ROOT_URL}/users/${id}`, {headers: { authorization: localStorage.getItem('token') }})
 			.then(
 				dispatch({ type: DELETE_ACCOUNT }),
 				localStorage.removeItem('token'),
