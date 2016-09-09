@@ -4,13 +4,11 @@ import { reducer as formReducer } from 'redux-form';
 
 // Reducers import
 import PersonsReducer from './persons';
-import authReducer from './auth';
 
 // State holding in combine reducers
 const rootReducer = combineReducers({
 	persons: PersonsReducer,
-	form: formReducer,
-	auth: authReducer
+	form: formReducer
 });
 
 export default rootReducer;

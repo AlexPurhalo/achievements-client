@@ -6,9 +6,9 @@
 </ul>
 <h3>Progress</h3>
 <ul>
-	<li>Sign in to existing user</li>
-	<li>Go to show page of this user</li>
-	<li>Check text says that you have access</li>
-	<li>Go to another person page</li>
-	<li>Check text that you can't get access to this page</li>
+	<li>Create user or sign in to existing account</li>
+	<li>Go to page of this account</li>
+	<li>Delete user clicking on acording button</li>
+	<li>Check that you was redirected to sing_in page</li>
+	<li>Back to list of persons and check that person was deleted from list</li>
 </ul>

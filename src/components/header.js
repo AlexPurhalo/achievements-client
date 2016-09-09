@@ -76,7 +76,7 @@ class Header extends Component {
 }
 
 function mapStateToProps(state) {
-	return { authenticated: state.auth.authenticated }
+	return { authenticated: state.persons.authenticated }
 }
 
 export default connect(mapStateToProps, { signOutUser })(Header);

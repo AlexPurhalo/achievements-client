@@ -3,7 +3,7 @@ import axios from 'axios';
 import { browserHistory } from 'react-router';
 
 // Import of action types
-import { FETCH_PERSONS, FETCH_SINGLE_PERSON, AUTH_USER, UNAUTH_USER } from './types';
+import { FETCH_PERSONS, FETCH_SINGLE_PERSON, AUTH_USER, UNAUTH_USER, DELETE_ACCOUNT } from './types';
 
 // Server root path
 const ROOT_URL = 'http://localhost:3000';
@@ -66,5 +66,17 @@ export function fetchSinglePerson(id) {
 					payload: response.data
 				})
 			})
+	}
+}
+
+// Delete request to destroy account from other
+export function deletePerson(id) {
+	return function(dispatch) {
+		axios.delete(`${ROOT_URL}/users/${id}`)
+			.then(
+				dispatch({ type: DELETE_ACCOUNT }),
+				localStorage.removeItem('token'),
+				browserHistory.push('/persons/sign_in')
+			);
 	}
 }
