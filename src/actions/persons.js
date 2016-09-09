@@ -88,9 +88,9 @@ export function deletePerson(id) {
 }
 
 // Put request to update person's info
-export function updatePersonData(id, {email, password}) {
+export function updatePersonData(id, {email, name}) {
 	return function(dispatch) {
-		axios.put(`${ROOT_URL}/users/${id}`, { email, password }, {headers: { authorization: localStorage.getItem('token') }})
+		axios.put(`${ROOT_URL}/users/${id}`, { email, name }, {headers: { authorization: localStorage.getItem('token') }})
 			.then(
 				dispatch({ type: UPDATE_ACCOUNT} ),
 				browserHistory.push(`/persons/${id}`)

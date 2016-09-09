@@ -6,8 +6,5 @@
 </ul>
 <h3>Progress</h3>
 <ul>
-	<li>Go by following path: persons/:id/edit </li>
-	<li>Change your data and submit it</li>
-	<li>See that you was redirected to page of your person</li>
-	<li>See that email has chaned</li>
+	<li>Check that i've provided username and cleaned password field on edit page</li>
 </ul>
