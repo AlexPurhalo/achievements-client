@@ -6,5 +6,5 @@
 </ul>
 <h3>Progress</h3>
 <ul>
-	<li>Check that i've provided username and cleaned password field on edit page</li>
+	<li>Check example of Rectable module implementation</li>
 </ul>
