@@ -4,6 +4,7 @@ import { browserHistory } from 'react-router';
 
 // Import of action types
 import {
+	FETCH_PERSONS_PAGES_INFO,
 	FETCH_PERSONS,
 	FETCH_SINGLE_PERSON,
 	AUTH_USER,
@@ -50,15 +51,28 @@ export function createPerson({email, password}) {
 }
 
 // Get request fetch accounts from server
-export function fetchPersons() {
+export function fetchPersons(pageNum) {
 	return function(dispatch) {
-		axios.get(`${ROOT_URL}/users`)
+		axios.get(`${ROOT_URL}/users?page=${pageNum}`)
 			.then(response => {
 				dispatch({
 					type: FETCH_PERSONS,
 					payload: response.data.users
 				})
 			});
+	}
+}
+
+// Takes info about pages
+export function fetchPersonsPages() {
+	return function(dispatch) {
+		axios.get(`${ROOT_URL}/users/`)
+			.then(response => {
+				dispatch({
+					type: FETCH_PERSONS_PAGES_INFO,
+					payload: response.data.meta.pagination
+				})
+			})
 	}
 }
 

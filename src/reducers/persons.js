@@ -1,6 +1,7 @@
 // Import of actions types
 import {
 	FETCH_PERSONS,
+	FETCH_PERSONS_PAGES_INFO,
 	FETCH_SINGLE_PERSON,
 	AUTH_USER,
 	UNAUTH_USER,
@@ -15,6 +16,8 @@ export default function(state = INITIAL_STATE, action) {
 	switch(action.type) {
 		case FETCH_PERSONS:
 			return { ...state, all_persons: action.payload };
+		case FETCH_PERSONS_PAGES_INFO:
+			return { ...state, pages_info: action.payload };
 		case FETCH_SINGLE_PERSON:
 			return { ...state, single_person: action.payload };
 		case AUTH_USER:

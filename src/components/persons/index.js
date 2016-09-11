@@ -2,68 +2,40 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import Reactable from 'reactable';
 
-var Table = Reactable.Table,
-	Thead = Reactable.Thead,
-	Th = Reactable.Th;
-
-var sgTeams = [
-	{name: "SG-1", leader: "Oneil", assignment: "Exploration", members: 4},
-	{name: "SG-2", leader: "Kawalsky", assignment: "Search and Rescue", members: 5},
-	{name: "SG-3", leader: "Reynolds", assignment: "Marine Combat", members: 10},
-	{name: "SG-4", leader: "Howe", assignment: "Medical", members: 4},
-	{name: "SG-5", leader: "Davis", assignment: "Marine Combat", members: 6},
-	{name: "SG-6", leader: "Fischer", assignment: "Search and Rescue", members: 10},
-	{name: "SG-7", leader: "Isaacs", assignment: "Scientific", members: 6},
-	{name: "SG-8", leader: "Yip", assignment: "Medical", members: 6},
-	{name: "SG-9", leader: "Winters", assignment: "Diplomatic", members: 7},
-	{name: "SG-10", leader: "Colville", assignment: "Military Exploration", members: 5}
-];
 
 // Actions import
-import { fetchPersons } from '../../actions/persons';
+import { fetchPersons, fetchPersonsPages } from '../../actions/persons';
 
+// Components import
+import Person from './index/person';
+import Pagination from './index/pagination';
+
+// Shows
 class Persons extends Component {
+	// Calls action creator
 	componentWillMount() {
-		// console.log('this would be a good time to call an action creator to fetch posts');
 		this.props.fetchPersons();
+		this.props.fetchPersonsPages();
 	}
 
-	renderTable() {
-		return (
-			<Table className="table"
-						 filterable={['leader', 'assignment', 'members']}
-						 noDataText="No matching records found"
-						 itemsPerPage={5}
-						 currentPage={0}
-						 sortable={true}
-						 data={sgTeams}>
-				<Thead>
-				<Th column="name">Away Team</Th>
-				<Th column="leader">Leader</Th>
-				<Th column="assignment">Mission</Th>
-				<Th column="members">Team Members</Th>
-				</Thead>
-			</Table>
-		)
-	}
-
-
+	// JSX rendering
 	render() {
-		console.log(this.props.persons);
+		console.log(this.props.pagesInfo);
 		return (
 			<div className="persons-list">
 				<ul className="list-group">
 					{this.props.persons.map(person =>
-						<Link to={`persons/${person.id}`} key={person.id}>
-							<li className="list-group-item">{person.email}</li>
-						</Link>
+						<Person
+							personId={person.id}
+							email={person.email}
+							key={person.id} />
 					)}
 				</ul>
-				<div>
-					{this.renderTable()}
-				</div>
+
+				<Pagination
+					fetchPersons={this.props.fetchPersons}
+					pagesCount={this.props.pagesInfo.total_pages} />
 			</div>
 		);
 	}
@@ -71,7 +43,10 @@ class Persons extends Component {
 
 // Transforms states to properties
 function mapStateToProps(state) {
-	return { persons: state.persons.all_persons }
+	return {
+		persons: state.persons.all_persons,
+		pagesInfo: state.persons.pages_info
+	}
 }
 
-export default connect(mapStateToProps, { fetchPersons })(Persons);
+export default connect(mapStateToProps, { fetchPersons, fetchPersonsPages })(Persons);
