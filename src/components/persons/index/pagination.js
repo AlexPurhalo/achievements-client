@@ -53,15 +53,43 @@ class Pagination extends Component {
 		);
 	}
 
+	pageNumbers(pageNum) {
+		return (
+			<li className={pageNum === this.state.pageNum ? "page-item active" : "page-item"}>
+				<button className="page-link">{pageNum}</button>
+			</li>
+		);
+	}
+
+	firstPage() {
+		return (
+			<li className="page-item">
+				<button className="page-link">1...</button>
+			</li>
+		);
+	}
+
+	lastPage() {
+		return (
+			<li className="page-item">
+				<button className="page-link">...{this.props.pagesCount}</button>
+			</li>
+		);
+	}
+
 	render() {
 		console.log(this.state.pageNum);
 		return (
 			<nav aria-label="...">
 				<ul className="pagination">
 					{this.prevPage()}
-					<li className="page-item"><a className="page-link" href="#">1</a></li>
-					<li className="page-item"><a className="page-link" href="#">2</a></li>
-					<li className="page-item"><a className="page-link" href="#">3</a></li>
+					{this.state.pageNum >= 4 ? (this.firstPage()) : null}
+					{this.state.pageNum > 2 ? this.pageNumbers(this.state.pageNum - 2) : null}
+					{this.state.pageNum > 1 ? this.pageNumbers(this.state.pageNum - 1) : null}
+					{this.pageNumbers(this.state.pageNum)}
+					{this.state.pageNum + 1 <= this.props.pagesCount ? this.pageNumbers(this.state.pageNum + 1) : null}
+					{this.state.pageNum + 2 <= this.props.pagesCount ? this.pageNumbers(this.state.pageNum + 2) : null}
+					{this.state.pageNum + 2 < this.props.pagesCount ? (this.lastPage()) : null}
 					{this.nextPage()}
 				</ul>
 			</nav>
