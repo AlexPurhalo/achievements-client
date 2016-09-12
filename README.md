@@ -6,5 +6,5 @@
 </ul>
 <h3>Progress</h3>
 <ul>
-	<li>Check example of Rectable module implementation</li>
+	<li>Check that pagination works perfectly</li>
 </ul>

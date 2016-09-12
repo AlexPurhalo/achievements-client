@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-
 // Changes pages number that will be fetched
 class Pagination extends Component {
 	// Default initialization
@@ -13,7 +12,9 @@ class Pagination extends Component {
 
 		this.nextPageClick = this.nextPageClick.bind(this);
 		this.prevPageClick = this.prevPageClick.bind(this);
-
+		this.firstPageClick = this.firstPageClick.bind(this);
+		this.lastPageClick = this.lastPageClick.bind(this);
+		this.choicePageClick = this.choicePageClick.bind(this);
 	}
 
 	// Changes current page to next step
@@ -26,6 +27,26 @@ class Pagination extends Component {
 	nextPageClick() {
 		this.props.fetchPersons(this.state.pageNum + 1);
 		this.setState({ pageNum: this.state.pageNum + 1});
+	}
+
+	// Bring to first page
+	firstPageClick() {
+		this.props.fetchPersons(1);
+		this.setState({pageNum: 1});
+	}
+
+	// Bring to last page
+	lastPageClick() {
+		this.props.fetchPersons(this.props.pagesCount);
+		this.setState({pageNum: this.props.pagesCount});
+
+	}
+
+	// Changes current page to passed number
+	choicePageClick(pageNum) {
+		console.log(`value: ${pageNum}`)
+		this.props.fetchPersons(pageNum);
+		this.setState({pageNum: pageNum})
 	}
 
 	// Shows button that calls method for page changing to next
@@ -53,30 +74,40 @@ class Pagination extends Component {
 		);
 	}
 
+	// Pages
 	pageNumbers(pageNum) {
 		return (
 			<li className={pageNum === this.state.pageNum ? "page-item active" : "page-item"}>
-				<button className="page-link">{pageNum}</button>
+				<button className="page-link" value={pageNum} onClick={e => this.choicePageClick(pageNum)}>{pageNum}</button>
 			</li>
 		);
 	}
 
+	// First page
 	firstPage() {
 		return (
 			<li className="page-item">
-				<button className="page-link">1...</button>
+				<button
+					onClick={this.firstPageClick}
+					className="page-link">
+					1...</button>
 			</li>
 		);
 	}
 
+	// Last page
 	lastPage() {
 		return (
 			<li className="page-item">
-				<button className="page-link">...{this.props.pagesCount}</button>
+				<button
+					onClick={this.lastPageClick}
+					className="page-link">
+					...{this.props.pagesCount}</button>
 			</li>
 		);
 	}
 
+	// JSX rendering
 	render() {
 		console.log(this.state.pageNum);
 		return (
