@@ -1,6 +1,7 @@
 // Node modules import
 import axios from 'axios';
 import { browserHistory } from 'react-router';
+import FormData from 'form-data'
 
 // Import of action types
 import {
@@ -8,6 +9,7 @@ import {
 	FETCH_PERSONS,
 	FETCH_SINGLE_PERSON,
 	AUTH_USER,
+	UPLOAD_PERSON_IMAGE,
 	UNAUTH_USER,
 	UPDATE_ACCOUNT,
 	DELETE_ACCOUNT } from './types';
@@ -110,4 +112,18 @@ export function updatePersonData(id, {email, name}) {
 				browserHistory.push(`/persons/${id}`)
 			);
 	};
+}
+
+export function uploadPersonPicture(id, image) {
+	return function(dispatch) {
+		console.log(id, image);
+		let data = new FormData();
+		data.append('image', image);
+
+		const options = {
+			headers: {  'Content-Type': 'multipart/form-data; boundary=6ff46e0b6b5148d984f148b6542e5a5d' }
+		};
+		axios.put(`${ROOT_URL}/users/${id}/avatar`, data, options)
+			.then(dispatch({ type: UPLOAD_PERSON_IMAGE } ))
+	}
 }

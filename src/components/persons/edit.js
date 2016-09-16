@@ -4,10 +4,44 @@ import { reduxForm } from 'redux-form';
 import { Link } from 'react-router';
 
 // Actions import
-import { updatePersonData, fetchSinglePerson, deletePerson } from '../../actions/persons';
+import { updatePersonData, fetchSinglePerson, deletePerson, uploadPersonPicture } from '../../actions/persons';
 
 // Changes data about user
 class EditPerson extends Component {
+	// Default initialization
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			file: '',
+			imagePreviewUrl: ''
+		};
+
+		this.handleImageChange = this.handleImageChange.bind(this);
+		this.handleImageSubmit = this.handleImageSubmit.bind(this);
+	}
+
+	// Image Submitting
+	handleImageSubmit(e) {
+		e.preventDefault();
+		console.log(this.state.file);
+		// this.props.uploadPersonPicture(this.state.image)
+	}
+
+	handleImageChange(e) {
+		let reader = new FileReader();
+		let file = e.target.files[0];
+
+		reader.onloadend = () => {
+			this.setState({
+				file: file,
+				imagePreviewUrl: reader.result
+			})
+		};
+
+		reader.readAsDataURL(file);
+		this.props.uploadPersonPicture(this.props.params.id, file)
+	}
 	// Calls function that create GET request to fetch data about certain user
 	componentWillMount() {
 		this.props.fetchSinglePerson(this.props.params.id);
@@ -26,10 +60,28 @@ class EditPerson extends Component {
 
 	// JSX rendering
 	render() {
+		let {imagePreviewUrl} = this.state;
+		let imagePreview = null;
+		if (imagePreviewUrl) {
+			imagePreview = (<img src={imagePreviewUrl} height="200px" width="200px"/>)
+		}
 		const { handleSubmit, fields: { email, name} } = this.props;
 
 		return (
 			<div>
+				<div className="image-upload">
+					<form onSubmit={this.handleImageSubmit}>
+						<input
+							onChange={this.handleImageChange}
+							type="file"/>
+						<button
+							onClick={this.handleImageSubmit}
+							type="submit" >
+							Upload Image
+						</button>
+					</form>
+					{imagePreview}
+				</div>
 				<form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
 					<h4>Edit person's data</h4>
 					<fieldset className="form-group">
@@ -83,4 +135,4 @@ function mapStateToProps(state) {
 export default reduxForm({
 	form: 'EditPersonForm',
 	fields: ['email', 'name']
-}, mapStateToProps, { updatePersonData, fetchSinglePerson, deletePerson })(EditPerson);
+}, mapStateToProps, { updatePersonData, fetchSinglePerson, deletePerson, uploadPersonPicture })(EditPerson);
