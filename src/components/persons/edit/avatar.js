@@ -28,17 +28,17 @@ class Avatar extends Component {
 
 	// Image target
 	handleImageChange(e) {
-		let reader = new FileReader();
 		let file = e.target.files[0];
-
+		var reader = new FileReader();
 		reader.onloadend = () => {
 			this.setState({
-				file: file,
+				file: reader.result,
 				imagePreviewUrl: reader.result
-			})
+			});
 		};
 
 		reader.readAsDataURL(file);
+
 	}
 
 	// JSX render

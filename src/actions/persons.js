@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 import FormData from 'form-data'
+import base64 from 'base-64';
 
 // Import of action types
 import {
@@ -116,14 +117,15 @@ export function updatePersonData(id, {email, name}) {
 
 export function uploadPersonPicture(id, image) {
 	return function(dispatch) {
-		console.log(id, image);
-		let data = new FormData();
-		data.append('image', image);
-
-		const options = {
-			headers: {  'Content-Type': 'multipart/form-data; boundary=6ff46e0b6b5148d984f148b6542e5a5d' }
+		const data = {
+			item: {
+				name: "some name",
+				description: "some text",
+				picture: image
+			}
 		};
-		axios.put(`${ROOT_URL}/users/${id}/avatar`, data, options)
-			.then(dispatch({ type: UPLOAD_PERSON_IMAGE } ))
+
+		axios.post('http://localhost:4000/items', data)
+			.then(dispatch({type: UPLOAD_PERSON_IMAGE}));
 	}
 }

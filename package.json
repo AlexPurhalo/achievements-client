@@ -28,6 +28,7 @@
   "dependencies": {
     "axios": "^0.14.0",
     "babel-preset-stage-1": "^6.1.18",
+    "base-64": "^0.1.0",
     "form-data": "^1.0.1",
     "lodash": "^3.10.1",
     "react": "^0.14.3",
