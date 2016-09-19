@@ -14,10 +14,13 @@ class Person extends Component {
 	}
 
 	render() {
-		// console.log(this.props.person);
 		const token = localStorage.getItem('token');
+		const imageUrl = this.props.person.picture.url;
 		return (
 			<div className="single-user-page">
+				{/*http://localhost:4000/system/items/pictures/000/000/018/original/data?1474057324*/}
+				{/*<img src={`http://localhost:3000${image}`} height="200px" width="200px"/>*/}
+				<div>{imageUrl ? (<img src={imageUrl} width="300px" height="300px"/>) : (<div>No photo</div>)}</div>
 				User: <strong>{this.props.person.email}</strong><br/>
 				Name: <strong>{this.props.person.name}</strong>
 				<div>	{this.props.person.access_token === token ?

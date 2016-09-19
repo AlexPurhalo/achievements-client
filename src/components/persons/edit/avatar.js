@@ -38,7 +38,6 @@ class Avatar extends Component {
 		};
 
 		reader.readAsDataURL(file);
-
 	}
 
 	// JSX render
@@ -47,6 +46,8 @@ class Avatar extends Component {
 		let imagePreview = null;
 		if (imagePreviewUrl) {
 			imagePreview = (<img src={imagePreviewUrl} height="200px" width="200px"/>)
+		} else {
+			imagePreview = (<img src={this.props.personImageUrl} height="200px" width="200px"/>);
 		}
 
 		return (

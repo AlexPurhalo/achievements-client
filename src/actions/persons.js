@@ -1,8 +1,6 @@
 // Node modules import
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-import FormData from 'form-data'
-import base64 from 'base-64';
 
 // Import of action types
 import {
@@ -118,14 +116,10 @@ export function updatePersonData(id, {email, name}) {
 export function uploadPersonPicture(id, image) {
 	return function(dispatch) {
 		const data = {
-			item: {
-				name: "some name",
-				description: "some text",
-				picture: image
-			}
+			picture: image
 		};
-
-		axios.post('http://localhost:4000/items', data)
+		console.log(data);
+		axios.put(`${ROOT_URL}/users/${id}`, data, { headers: { authorization: localStorage.getItem('token') }})
 			.then(dispatch({type: UPLOAD_PERSON_IMAGE}));
 	}
 }

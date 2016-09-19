@@ -20,6 +20,7 @@ class EditPerson extends Component {
 	// Calls function sends PUT request to server to change information about certain person
 	handleFormSubmit({email, name}) {
 		if (email === "") email = this.props.person.email;
+		if (name === "") name = this.props.person.name;
 		this.props.updatePersonData(this.props.params.id, {email: email, name: name});
 	}
 
@@ -31,10 +32,11 @@ class EditPerson extends Component {
 	// JSX rendering
 	render() {
 		const { handleSubmit, fields: { email, name} } = this.props;
-
 		return (
 			<div>
-				<Avatar personId={this.props.params.id}/>
+				<Avatar
+					personId={this.props.params.id}
+					personImageUrl={this.props.person.picture.url}/>
 				<form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
 					<h4>Edit person's data</h4>
 					<fieldset className="form-group">
