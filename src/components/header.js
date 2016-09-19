@@ -10,6 +10,12 @@ class Header extends Component {
 		this.props.signOutUser()
 	}
 
+	accountPage() {
+		const token = localStorage.getItem('token');
+		const accountId = token.substring(0, token.indexOf(':'));
+		return `persons/${accountId}`
+	}
+
 	renderLinks() {
 		if (!this.props.authenticated) {
 			return [
@@ -53,6 +59,13 @@ class Header extends Component {
 						to="/"
 						className="nav-link">
 						Sign Out
+					</Link>
+				</li>,
+				<li className="nav-item" key={3}>
+					<Link
+						to={this.accountPage()}
+						className="nav-link">
+						Account
 					</Link>
 				</li>
 			]

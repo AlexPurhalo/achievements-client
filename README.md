@@ -6,5 +6,5 @@
 </ul>
 <h3>Progress</h3>
 <ul>
-	<li>Go to edit section and update person's avatar</li>
+	<li>Click on Account button and check that it brings you to current person</li>
 </ul>
