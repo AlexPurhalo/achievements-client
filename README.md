@@ -6,5 +6,7 @@
 </ul>
 <h3>Progress</h3>
 <ul>
-	<li>Click on Account button and check that it brings you to current person</li>
+	<li>
+		Check Achievements CRUD ability by your account page
+	</li>
 </ul>

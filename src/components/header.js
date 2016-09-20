@@ -12,8 +12,7 @@ class Header extends Component {
 
 	accountPage() {
 		const token = localStorage.getItem('token');
-		const accountId = token.substring(0, token.indexOf(':'));
-		return `persons/${accountId}`
+		if (token) { return `/persons/${token.substring(0, token.indexOf(':'))}` }
 	}
 
 	renderLinks() {

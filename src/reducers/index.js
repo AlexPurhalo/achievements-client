@@ -3,12 +3,15 @@ import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 
 // Reducers import
-import PersonsReducer from './persons';
+import personsReducer from './persons';
+import achievementsReducer from './achievements';
 
 // State holding in combine reducers
 const rootReducer = combineReducers({
-	persons: PersonsReducer,
+	persons: personsReducer,
+	achievements: achievementsReducer,
 	form: formReducer
+
 });
 
 export default rootReducer;
