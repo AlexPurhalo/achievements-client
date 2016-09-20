@@ -14,7 +14,7 @@ import {
 	DELETE_ACCOUNT } from './types';
 
 // Server root path
-const ROOT_URL = 'http://localhost:3000';
+const ROOT_URL = 'https://achievements-server.herokuapp.com';
 
 // Creates session
 export function signInUser({ email, password }) {

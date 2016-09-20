@@ -29,6 +29,7 @@ class Persons extends Component {
 						<Person
 							personId={person.id}
 							email={person.email}
+							avatar={person.picture.url}
 							key={person.id} />
 					)}
 				</ul>
