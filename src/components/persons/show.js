@@ -23,26 +23,34 @@ class Person extends Component {
 		const imageUrl = this.props.person.picture.url;
 		return (
 			<div className="single-user-page">
-				<div>{imageUrl ? (<img src={imageUrl} width="300px" height="300px"/>) : (<div>No photo</div>)}</div><br/>
-				User: <strong>{this.props.person.email}</strong><br/>
-				Name: <strong>{this.props.person.name}</strong><br/>
-				<h2>{this.props.person.profile}</h2
-				><br/>
-				Age: <strong>{this.props.person.age}</strong><br/>
-				Skype: <strong>{this.props.person.skype}</strong><br/>
-				Mobile: <strong>{this.props.person.mobile}</strong><br/>
+				<img src={imageUrl} width="300px" height="300px" className="avatar"/>
+				{/*<div>{imageUrl ? (<img src={imageUrl} width="300px" height="300px"/>) : (<div>No photo</div>)}</div><br/>*/}
+				{/*User: <strong>{this.props.person.email}</strong><br/>*/}
+				{/*Name: <strong>{this.props.person.name}</strong><br/>*/}
+				{/*<h2>{this.props.person.profile}</h2*/}
+				{/*><br/>*/}
+				{/*Age: <strong>{this.props.person.age}</strong><br/>*/}
+				{/*Skype: <strong>{this.props.person.skype}</strong><br/>*/}
+				{/*Mobile: <strong>{this.props.person.mobile}</strong><br/>*/}
 
-				<Achievements
-					achievements={this.props.achievements}
-					access_token={this.props.person.access_token}
-					personId={this.props.person.id} />
+				{/*<Achievements*/}
+				{/*achievements={this.props.achievements}*/}
+				{/*access_token={this.props.person.access_token}*/}
+				{/*personId={this.props.person.id} />*/}
 
-				<div>	{this.props.person.access_token === token ?
-					(
-						<div><Link to={`/persons/${this.props.params.id}/edit`}>You can</Link></div>
-					) :
-					(<div>Sorry, you can't do this</div>)}
-					</div>
+				<div>
+					{
+						this.props.person.access_token === token
+							?
+							(
+								<div><Link to={`/persons/${this.props.params.id}/edit`}>You can</Link></div>
+							)
+							:
+							(
+								<div>Sorry, you can't do this</div>
+							)
+					}
+				</div>
 			</div>
 		);
 	}

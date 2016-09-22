@@ -1,5 +1,6 @@
 // Node modules import
 import React, { Component } from 'react'
+import s from './app.scss';
 
 // Other layout stuff import
 import Header from './header';
