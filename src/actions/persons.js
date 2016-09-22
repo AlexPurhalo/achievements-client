@@ -120,6 +120,13 @@ export function uploadPersonPicture(id, image) {
 		};
 		console.log(data);
 		axios.put(`${ROOT_URL}/users/${id}`, data, { headers: { authorization: localStorage.getItem('token') }})
-			.then(dispatch({type: UPLOAD_PERSON_IMAGE}));
+			.then(response => {
+				dispatch({
+					type: UPLOAD_PERSON_IMAGE,
+					payload: response.data
+				});
+
+				browserHistory.push(`/persons/${id}`);
+			});
 	}
 }
