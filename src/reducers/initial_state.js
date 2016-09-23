@@ -7,5 +7,6 @@ export const INITIAL_STATE = {
 	},
 	pages_info: {per_page: 0, total_pages: 0, total_objects: 0},
 	authenticated: false,
-	all_achievements: []
+	all_achievements: [],
+	all_skills: []
 };
