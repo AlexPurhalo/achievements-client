@@ -8,7 +8,7 @@ class Person extends Component {
 		return (
 			<Link to={`persons/${this.props.personId}`}>
 				<li className="list-group-item">
-					<img src={this.props.avatar} height="40px" width="40px" />
+					<img src={`http://localhost:3000/${this.props.avatar}`} height="40px" width="40px" />
 					{this.props.email}
 					</li>
 			</Link>

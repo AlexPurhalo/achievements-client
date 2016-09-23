@@ -23,7 +23,24 @@ class Person extends Component {
 		const imageUrl = this.props.person.picture.url;
 		return (
 			<div className="single-user-page">
-				<img src={imageUrl} width="300px" height="300px" className="avatar"/>
+				<div className="row">
+					<div className="col-md-12">
+						<h1>Ruby on Rails + React JS developer</h1>
+					</div>
+				</div>
+				<div className="row">
+					<div className="col-md-6">
+						<div className="thumbnail">
+							<img src={`http://localhost:3000/${imageUrl}`} width="300px" height="300px" alt="Image" />
+						</div>
+					</div>
+					<div className="col-md-6">
+						<h2>Alexnder Purhalo</h2>
+						<h3>alexpurhalo@gmail.com</h3>
+						<h4>+38 095 220 78 66</h4>
+						<h4>alexpurhalo</h4>
+					</div>
+				</div>
 				{/*<div>{imageUrl ? (<img src={imageUrl} width="300px" height="300px"/>) : (<div>No photo</div>)}</div><br/>*/}
 				{/*User: <strong>{this.props.person.email}</strong><br/>*/}
 				{/*Name: <strong>{this.props.person.name}</strong><br/>*/}

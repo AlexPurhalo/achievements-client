@@ -5,7 +5,7 @@ import axios from 'axios';
 import { FETCH_ACHIEVEMENTS, CREATE_ACHIEVEMENT, UPDATE_ACHIEVEMENT, DELETE_ACHIEVEMENT } from './types';
 
 // Url for requests manipulation
-const ROOT_URL  = 'https://achievements-server.herokuapp.com';
+const ROOT_URL  = 'http://localhost:3000';
 
 const authConfig = {headers: { authorization: localStorage.getItem('token') }};
 
