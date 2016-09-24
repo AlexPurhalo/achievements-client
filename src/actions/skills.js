@@ -21,3 +21,31 @@ export function fetchSkills(user_id) {
 			});
 	}
 }
+
+export function createSkill(user_id, body) {
+	return function(dispatch) {
+		const data = { skill: {
+			user_id: user_id,
+			body: body,
+		} };
+		axios.post(`${ROOT_URL}/users/${user_id}/skills`, data, authConfig)
+			.then(response => {
+				dispatch({
+					type: CREATE_SKILL,
+					payload: response.data.skills
+				})
+			})
+	}
+}
+
+export function deleteSkill(user_id, skill_id) {
+	return function(dispatch) {
+		axios.delete(`${ROOT_URL}/users/${user_id}/skills/${skill_id}`, authConfig)
+			.then(response => {
+			dispatch({
+				type: DELETE_SKILL,
+				payload: response.data.skills
+			})
+		})
+	}
+}

@@ -9,6 +9,10 @@ export default function(state = INITIAL_STATE, action) {
 	switch(action.type) {
 		case FETCH_SKILLS:
 			return { ...state, all_skills: action.payload };
+		case CREATE_SKILL:
+			return { ...state, all_skills: action.payload };
+		case DELETE_SKILL:
+			return { ...state, all_skills: action.payload };
 		default:
 			return state;
 	}

@@ -31,7 +31,10 @@ class Person extends Component {
 						<div className="profile-main-info">
 							<h1 className="person-profile">{this.props.person.profile}</h1>
 							<h2 className="person-skills">
-								<Skills skills={this.props.skills}/>
+								<Skills
+									skills={this.props.skills}
+									access_token={this.props.person.access_token}
+									personId={this.props.person.id} />
 							</h2>
 							{
 								this.props.person.access_token === token
