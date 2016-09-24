@@ -24,7 +24,6 @@ class Person extends Component {
 	render() {
 		const token = localStorage.getItem('token');
 		const imageUrl = this.props.person.picture.url;
-		console.log(this.props.skills.map(skill => skill.body));
 		return (
 			<div className="single-user-page">
 				<div className="row">
