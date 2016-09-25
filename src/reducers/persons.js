@@ -5,6 +5,7 @@ import {
 	FETCH_SINGLE_PERSON,
 	AUTH_USER,
 	UNAUTH_USER,
+	UPDATE_ACCOUNT,
 	DELETE_ACCOUNT
 } from '../actions/types';
 
@@ -24,6 +25,8 @@ export default function(state = INITIAL_STATE, action) {
 			return { ...state, authenticated: true };
 		case UNAUTH_USER:
 			return { ...state, authenticated: false };
+		case UPDATE_ACCOUNT:
+			return { ...state, single_person: action.payload };
 		case DELETE_ACCOUNT:
 			return { ...state, authenticated: false };
 		default:

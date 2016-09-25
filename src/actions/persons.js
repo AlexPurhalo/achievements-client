@@ -16,6 +16,9 @@ import {
 // Server root path
 const ROOT_URL = 'http://localhost:3000';
 
+// headers configuration
+const authConfig = {headers: { authorization: localStorage.getItem('token') }};
+
 // Creates session
 export function signInUser({ email, password }) {
 	return function(dispatch) {
@@ -102,16 +105,33 @@ export function deletePerson(id) {
 	}
 }
 
-// Put request to update person's info
-export function updatePersonData(id, {email, name}) {
+export function updatePersonData(id, profileTitle, email) {
 	return function(dispatch) {
-		axios.put(`${ROOT_URL}/users/${id}`, { email, name }, {headers: { authorization: localStorage.getItem('token') }})
-			.then(
-				dispatch({ type: UPDATE_ACCOUNT} ),
-				browserHistory.push(`/persons/${id}`)
-			);
-	};
+		const data = {
+			user: {
+				profile: profileTitle,
+				email: email
+			}
+		};
+		axios.put(`${ROOT_URL}/users/${id}`, data, authConfig)
+			.then(response => {
+				dispatch({
+					type: UPDATE_ACCOUNT,
+					payload: response.data
+				})
+			})
+	}
 }
+// Put request to update person's info
+// export function updatePersonData(id, {email, name}) {
+// 	return function(dispatch) {
+// 		axios.put(`${ROOT_URL}/users/${id}`, { email, name }, {headers: { authorization: localStorage.getItem('token') }})
+// 			.then(
+// 				dispatch({ type: UPDATE_ACCOUNT} ),
+// 				browserHistory.push(`/persons/${id}`)
+// 			);
+// 	};
+// }
 
 export function uploadPersonPicture(id, image) {
 	return function(dispatch) {

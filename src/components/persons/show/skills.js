@@ -29,7 +29,6 @@ class Skills extends Component {
 
 
 	handleDeleteSkillClick(skill_id) {
-		console.log(skill_id);
 		this.props.deleteSkill(this.props.personId, skill_id)
 	}
 
@@ -45,7 +44,7 @@ class Skills extends Component {
 		const token = localStorage.getItem('token');
 
 		return (
-			<div>
+			<h2 className="person-skills">
 				{
 					this.props.access_token  === token
 						?
@@ -105,7 +104,7 @@ class Skills extends Component {
 						:
 						null
 				}
-			</div>
+			</h2>
 		);
 	}
 }

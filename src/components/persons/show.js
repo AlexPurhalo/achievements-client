@@ -10,8 +10,12 @@ import { fetchSkills } from '../../actions/skills';
 
 
 // Components import
-import Achievements from './show/achievements';
+import Profile from './show/profile';
 import Skills from './show/skills';
+import Avatar from './show/avatar';
+import PersonInfo from './show/person_info';
+import Achievements from './show/achievements';
+
 
 // Shows information about single person
 class Person extends Component {
@@ -23,81 +27,41 @@ class Person extends Component {
 	}
 	render() {
 		const token = localStorage.getItem('token');
-		const imageUrl = this.props.person.picture.url;
+
 		return (
 			<div className="single-user-page">
-				<div className="row">
+				<div className="row profile-main-info">
 					<div className="col-md-12">
-						<div className="profile-main-info">
-							<h1 className="person-profile">{this.props.person.profile}</h1>
-							<h2 className="person-skills">
-								<Skills
-									skills={this.props.skills}
-									access_token={this.props.person.access_token}
-									personId={this.props.person.id} />
-							</h2>
-							{
-								this.props.person.access_token === token
-									?
-									(
-										<div className="link-to-edit-account-page">
-											<Link to={`/persons/${this.props.params.id}/edit`}>Edit Account</Link>
-										</div>
-									)
-									:
-									null
-							}
-						</div>
+						<Profile
+							profile={this.props.person.profile}
+							personId={this.props.person.id}
+							accessToken={this.props.person.access_token}
+							email={this.props.person.email} />
+
+						<Skills
+							skills={this.props.skills}
+							access_token={this.props.person.access_token}
+							personId={this.props.person.id} />
 					</div>
 				</div>
-				<div className="row">
+
+				<div className="row person-data">
 					<div className="col-md-6">
-						<div className="thumbnail">
-							<img src={`http://localhost:3000/${imageUrl}`} alt="Image" />
-						</div>
+						<Avatar imageUrl={this.props.person.picture.url}/>
 					</div>
 					<div className="col-md-6">
-						<div className="person-info">
-							<h2>{this.props.person.name}</h2>
-							<h3>
-								{this.props.person.city}, {this.props.person.age} years
-							</h3>
-							<h4 className="person-phone">
-								<img
-									src="http://www.clipartbest.com/cliparts/dT6/nXB/dT6nXBGT9.png"
-									alt="phone-icon"
-									className="phone-icon"/>
-								{this.props.person.mobile}
-							</h4>
-							<h4 className="person-email">
-								<img
-									src="http://www.crescentinteractive.com/wp-content/uploads/2014/10/Email-Icon-Image.png"
-									alt="email"
-									className="email-icon" />
-								{this.props.person.email}
-							</h4>
-							<h4 className="person-skype">
-								<img
-									src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Skype-icon-new.png"
-									alt="skype-icon"
-									className="skype-icon"/>
-								{this.props.person.skype}
-								<a href={this.props.person.github}>
-									<img
-										src="https://cdn0.iconfinder.com/data/icons/octicons/1024/mark-github-256.png"
-										alt="skype-icon"
-										className="github-icon"/>
-								</a>
-								<a href={this.props.person.linkedin}>
-									<img
-										src="http://marisasanfilippo.com/wp-content/uploads/2015/07/Linkedin_circle.svg_.png"
-										alt="skype-icon"
-										className="linkedin-icon"/>
-								</a>
-							</h4>
-						</div>
+						<PersonInfo
+							linkedin={this.props.person.linkedin}
+							github={this.props.person.github}
+							skype={this.props.person.skype}
+							email={this.props.person.email}
+							mobile={this.props.person.mobile}
+							age={this.props.person.age}
+							name={this.props.person.name}
+							city={this.props.person.city}/>
 					</div>
 				</div>
+
 				<div className="person-achievements">
 					<div className="row">
 						<div className="col-md-12">
