@@ -105,14 +105,16 @@ export function deletePerson(id) {
 	}
 }
 
-export function updatePersonData(id, profileTitle, email) {
+export function updatePersonData(id, profileTitle, name, city) {
 	return function(dispatch) {
 		const data = {
 			user: {
 				profile: profileTitle,
-				email: email
+				name: name,
+				city: city
 			}
 		};
+
 		axios.put(`${ROOT_URL}/users/${id}`, data, authConfig)
 			.then(response => {
 				dispatch({

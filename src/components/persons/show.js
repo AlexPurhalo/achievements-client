@@ -58,7 +58,10 @@ class Person extends Component {
 							mobile={this.props.person.mobile}
 							age={this.props.person.age}
 							name={this.props.person.name}
-							city={this.props.person.city}/>
+							city={this.props.person.city}
+							profile={this.props.person.profile}
+							accessToken={this.props.person.access_token}
+							personId={this.props.person.id} />
 					</div>
 				</div>
 

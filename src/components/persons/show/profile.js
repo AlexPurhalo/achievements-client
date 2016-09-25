@@ -31,7 +31,7 @@ class Profile extends Component {
 		e.preventDefault();
 
 		if (this.state.profileTitle.length) {
-			this.props.updatePersonData(this.props.personId, this.state.profileTitle, this.props.email);
+			this.props.updatePersonData(this.props.personId, this.state.profileTitle);
 		}
 
 
@@ -50,7 +50,7 @@ class Profile extends Component {
 					className="title-input"
 					value={this.state.profileTitle}
 					placeholder={this.props.profile}
-					type="text"/>
+					type="text" />
 				<button type="submit" className="on-update-title-btn">
 					<img
 						type="submit"

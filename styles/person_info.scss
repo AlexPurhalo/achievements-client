@@ -1,0 +1,78 @@
+@import './variables.scss';
+
+.person-info {
+	text-align: center;
+	margin: 1.5em 0;
+}
+
+.person-info h2 {
+	font-size: 2.3rem;
+	letter-spacing: 5px;
+	margin: 0 0 1rem;
+}
+
+.person-info h3{
+	font-size: 2rem;
+	letter-spacing: 3.5px;
+	margin: 0 0 2rem;
+}
+
+.person-info h4{
+	margin: 1rem 0;
+	font-size: 1.3rem;
+}
+
+.person-info .person-phone {
+	margin: 2.6rem 0 0 0;
+	font-size: 1.4rem;
+	letter-spacing: 2px;
+}
+
+.person-info .phone-icon {
+	width: 28px;
+	height: 28px;
+	margin: 0 1rem 0;
+}
+
+.person-info .person-skype {
+	font-size: 1.4rem;
+	letter-spacing: 2px;
+	margin: 1.3rem 0;
+}
+
+.person-info .skype-icon {
+	width: 28px;
+	height: 28px;
+	margin: 0 1rem 0;
+}
+
+.person-info .github-icon {
+	width: 30px;
+	height: 30px;
+	margin: 0 0.4rem 0 3rem;
+}
+
+.person-info .linkedin-icon {
+	width: 32px;
+	height: 32px;
+	margin: 0 1rem 0;
+}
+
+.person-info .person-email {
+	margin: 2.4rem 0 0 0;
+	letter-spacing: 3px;
+	font-size: 1.55rem;
+}
+
+.person-info .email-icon {
+	width: 50px;
+	height: 25px;
+	margin: 0 0.8rem;
+}
+
+ul {
+
+}
+ul li {
+	display: inline-block;
+}
