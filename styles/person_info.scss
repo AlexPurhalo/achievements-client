@@ -12,7 +12,7 @@
 }
 
 .person-info h3{
-	font-size: 2rem;
+	font-size: 2.3rem;
 	letter-spacing: 3.5px;
 	margin: 0 0 2rem;
 }
@@ -34,7 +34,7 @@
 	margin: 0 1rem 0;
 }
 
-.person-info .person-skype {
+.person-info .bottom-person-info {
 	font-size: 1.4rem;
 	letter-spacing: 2px;
 	margin: 1.3rem 0;
@@ -49,13 +49,13 @@
 .person-info .github-icon {
 	width: 30px;
 	height: 30px;
-	margin: 0 0.4rem 0 3rem;
+	margin: 0 0.7rem 0 4.6rem;
 }
 
 .person-info .linkedin-icon {
 	width: 32px;
 	height: 32px;
-	margin: 0 1rem 0;
+	margin: 0 0.7rem 0 1.5rem;
 }
 
 .person-info .person-email {
@@ -71,7 +71,8 @@
 }
 
 ul {
-
+	margin: 0 0;
+	padding: 0 0;
 }
 ul li {
 	display: inline-block;
@@ -136,5 +137,20 @@ ul li {
 }
 
 
+.person-edit-skype-input {
+	max-width: 200px;
+}
 
+.person-edit-github-input {
+	max-width: 400px;
+	font-size: 0.9rem;
+}
 
+.person-edit-linkedin-input {
+	max-width: 400px;
+	font-size: 0.9rem;
+}
+
+.person-skype {
+	font-size: 1.6rem;
+}

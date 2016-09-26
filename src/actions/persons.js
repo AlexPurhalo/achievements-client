@@ -105,13 +105,19 @@ export function deletePerson(id) {
 	}
 }
 
-export function updatePersonData(id, profileTitle, name, city) {
+export function updatePersonData(id, profileTitle, name, city, age, mobile, email, skype, github, linkedin) {
 	return function(dispatch) {
 		const data = {
 			user: {
 				profile: profileTitle,
 				name: name,
-				city: city
+				city: city,
+				age: age,
+				mobile: mobile,
+				email: email,
+				skype: skype,
+				github: github,
+				linkedin: linkedin
 			}
 		};
 
@@ -124,16 +130,6 @@ export function updatePersonData(id, profileTitle, name, city) {
 			})
 	}
 }
-// Put request to update person's info
-// export function updatePersonData(id, {email, name}) {
-// 	return function(dispatch) {
-// 		axios.put(`${ROOT_URL}/users/${id}`, { email, name }, {headers: { authorization: localStorage.getItem('token') }})
-// 			.then(
-// 				dispatch({ type: UPDATE_ACCOUNT} ),
-// 				browserHistory.push(`/persons/${id}`)
-// 			);
-// 	};
-// }
 
 export function uploadPersonPicture(id, image) {
 	return function(dispatch) {

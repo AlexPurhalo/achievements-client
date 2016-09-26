@@ -78,7 +78,7 @@ class Profile extends Component {
 	titleRender() {
 		return (
 			<h1 className="person-profile">
-				{this.props.profile && this.props.profile.length > 0 ? (this.props.profile) : (<span>Still Empty</span>)}
+				{this.props.profile && this.props.profile.length > 0 ? (this.props.profile) : ('Your Profile')}
 				{this.props.accessToken === localStorage.getItem('token') ? (this.editIconRender()) : null}
 			</h1>
 		);
