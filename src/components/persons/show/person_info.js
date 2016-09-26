@@ -24,11 +24,9 @@ class PersonInfo extends Component {
 		this.accessToken = localStorage.getItem('token');
 
 		this.handleEditNameClick = this.handleEditNameClick.bind(this);
-		this.onNameChange = this.onNameChange.bind(this);
 		this.handleUpdateName = this.handleUpdateName.bind(this);
 
 		this.handleEditCityClick = this.handleEditCityClick.bind(this);
-		this.onCityChange = this.onCityChange.bind(this);
 		this.handleUpdateCity = this.handleUpdateCity.bind(this);
 	}
 
@@ -37,16 +35,15 @@ class PersonInfo extends Component {
 		this.setState({ onNameEdit: !this.state.onNameEdit });
 	}
 
-	onNameChange(e) {
-		this.setState({ name: e.target.value });
-	}
-
 	personNameRender() {
 		return (
 			<h2>
 				{this.props.name ? (this.props.name) : ('Still empty')}
 				{this.props.accessToken === this.accessToken ?
-					(this.changeEditStateButton(this.handleEditNameClick, 'btn btn-default', 'Edit')) : null}
+					(this.changeEditStateButton(
+						this.handleEditNameClick,
+						'on-edit-name-icon',
+						'http://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png')) : null}
 			</h2>
 		);
 	}
@@ -55,11 +52,15 @@ class PersonInfo extends Component {
 		return (
 			<form onSubmit={this.handleUpdateName}>
 				<input
+					onChange={this.handleDataChange('name')}
 					type="text"
-					placeholder={this.props.name}
-					onChange={this.onNameChange}/>
-				<button type="submit">Update</button>
-				{this.changeEditStateButton(this.handleEditNameClick, 'btn btn-default', 'Cancel')}
+					className="person-edit-data-input person-edit-name-input"
+					placeholder={this.props.name}/>
+				{this.updatePersonInfoButton()}
+				{this.changeEditStateButton(
+					this.handleEditNameClick,
+					'cancel-edit-name-icon',
+					'http://iconizer.net/files/DefaultIcon_ver_0.11/orig/cancel.png')}
 			</form>
 		);
 	}
@@ -77,16 +78,15 @@ class PersonInfo extends Component {
 		this.setState({ onCityEdit: !this.state.onCityEdit });
 	}
 
-	onCityChange(e) {
-		this.setState({ city: e.target.value })
-	}
-
 	personCityRender() {
 		return (
 			<h3>
 				{this.props.city ? (this.props.city) : ('Still empty')}
 				{this.props.accessToken === this.accessToken ?
-					(this.changeEditStateButton(this.handleEditCityClick, 'btn btn-default', 'Edit')) : null}
+					(this.changeEditStateButton(
+						this.handleEditCityClick,
+						'cancel-edit-city-icon',
+						'http://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png')) : null}
 			</h3>
 		);
 	}
@@ -95,11 +95,15 @@ class PersonInfo extends Component {
 		return (
 			<form onSubmit={this.handleUpdateCity}>
 				<input
-					onChange={this.onCityChange}
+					onChange={this.handleDataChange('city')}
+					className="person-edit-data-input person-edit-city-input"
 					placeholder={this.props.city}
 					type="text" />
-				<button type="submit">Update</button>
-				{this.changeEditStateButton(this.handleEditCityClick, 'btn btn-default', 'Cancel')}
+				{this.updatePersonInfoButton()}
+				{this.changeEditStateButton(
+					this.handleEditCityClick,
+					'on-edit-city-icon',
+					'http://iconizer.net/files/DefaultIcon_ver_0.11/orig/cancel.png')}
 			</form>
 
 		);
@@ -116,17 +120,36 @@ class PersonInfo extends Component {
 	}
 
 	// Common configs
-	changeEditStateButton(handleEditClickType, className, text) {
+	changeEditStateButton(handleEditClickType, className, img_url) {
 		return (
 			<button
 				type="reset"
 				onClick={handleEditClickType}
-				className={className}>
-				{text}
+				className='unstiled-btn'>
+				<img src={img_url} alt="" className={className}/>
 			</button>
 		)
 	}
 
+	updatePersonInfoButton() {
+		return (
+			<button
+				type="submit"
+				className="unstiled-btn">
+				<img
+					className="update-data-icon"
+					src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQkxasy3vTR3Ns-Br-C-S338ksNJ2qTl54YxDhFIm-YZZDrhbZu" />
+			</button>
+		);
+	}
+
+	handleDataChange(key) {
+		return function(e) {
+			let state = {};
+			state[key] = e.target.value;
+			this.setState(state);
+		}.bind(this);
+	}
 
 
 	// JSX render
@@ -136,7 +159,7 @@ class PersonInfo extends Component {
 				{this.state.onNameEdit ? (this.personNameFormRender()) : (this.personNameRender())}
 				<ul>
 					<li>{this.state.onCityEdit ? (this.personCityFormRender()) : (this.personCityRender())}</li>
-					<li><h3>, {this.props.age} years</h3></li>
+					<li><h3>, 19 years</h3></li>
 				</ul>
 				<h4 className="person-phone">
 					<img

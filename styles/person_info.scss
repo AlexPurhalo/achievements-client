@@ -76,3 +76,65 @@ ul {
 ul li {
 	display: inline-block;
 }
+
+
+.unstiled-btn {
+	border: 0;
+	background: transparent;
+}
+
+.on-edit-name-icon {
+	width: 30px;
+	height: 30px;
+}
+
+.on-edit-city-icon {
+	width: 30px;
+	height: 30px;
+}
+.cancel-edit-name-icon {
+	width: 30px;
+	height: 30px;
+}
+
+.cancel-edit-city-icon {
+	width: 30px;
+	height: 30px;
+}
+
+.update-data-icon {
+	width: 30px;
+	height: 30px;
+}
+
+
+.person-edit-data-input {
+	border: none;
+	border-bottom: solid;
+	text-align: center;
+	font-weight: 500;
+	letter-spacing: 5px;
+}
+
+.person-edit-data-input:focus {
+	outline: none;
+}
+
+.person-edit-data-input::-webkit-input-placeholder {
+	color: #222;
+	opacity:  1;
+}
+
+.person-edit-name-input {
+	font-size: 2.2rem;
+	max-width: 400px;
+}
+
+.person-edit-city-input {
+	font-size: 1.9rem;
+	max-width: 240px;
+}
+
+
+
+
