@@ -22,26 +22,17 @@ class PersonInfo extends Component {
 		};
 
 		this.accessToken = localStorage.getItem('token');
-
-		this.handleEditNameClick = this.handleEditNameClick.bind(this);
-		this.handleUpdateName = this.handleUpdateName.bind(this);
-
-		this.handleEditCityClick = this.handleEditCityClick.bind(this);
-		this.handleUpdateCity = this.handleUpdateCity.bind(this);
 	}
 
 	// Name tags render
-	handleEditNameClick() {
-		this.setState({ onNameEdit: !this.state.onNameEdit });
-	}
-
 	personNameRender() {
+		// onClick={}
 		return (
 			<h2>
 				{this.props.name ? (this.props.name) : ('Still empty')}
 				{this.props.accessToken === this.accessToken ?
 					(this.changeEditStateButton(
-						this.handleEditNameClick,
+						this.onEditChangeClick.bind(this, this.state.onNameEdit, 'onNameEdit'),
 						'on-edit-name-icon',
 						'http://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png')) : null}
 			</h2>
@@ -50,7 +41,7 @@ class PersonInfo extends Component {
 
 	personNameFormRender() {
 		return (
-			<form onSubmit={this.handleUpdateName}>
+			<form onSubmit={this.handleUpdateData()}>
 				<input
 					onChange={this.handleDataChange('name')}
 					type="text"
@@ -58,24 +49,11 @@ class PersonInfo extends Component {
 					placeholder={this.props.name}/>
 				{this.updatePersonInfoButton()}
 				{this.changeEditStateButton(
-					this.handleEditNameClick,
+					this.onEditChangeClick.bind(this, this.state.onNameEdit, 'onNameEdit'),
 					'cancel-edit-name-icon',
 					'http://iconizer.net/files/DefaultIcon_ver_0.11/orig/cancel.png')}
 			</form>
 		);
-	}
-
-	handleUpdateName(e) {
-		e.preventDefault();
-		if (this.state.name) { this.props.updatePersonData(this.props.personId, undefined, this.state.name) }
-
-		this.setState({ onNameEdit: !this.state.onNameEdit, name: '' });
-	}
-
-
-	// City tags render
-	handleEditCityClick() {
-		this.setState({ onCityEdit: !this.state.onCityEdit });
 	}
 
 	personCityRender() {
@@ -84,7 +62,7 @@ class PersonInfo extends Component {
 				{this.props.city ? (this.props.city) : ('Still empty')}
 				{this.props.accessToken === this.accessToken ?
 					(this.changeEditStateButton(
-						this.handleEditCityClick,
+						this.onEditChangeClick.bind(this, this.state.onCityEdit, 'onCityEdit'),
 						'cancel-edit-city-icon',
 						'http://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png')) : null}
 			</h3>
@@ -93,7 +71,7 @@ class PersonInfo extends Component {
 
 	personCityFormRender() {
 		return (
-			<form onSubmit={this.handleUpdateCity}>
+			<form onSubmit={this.handleUpdateData()}>
 				<input
 					onChange={this.handleDataChange('city')}
 					className="person-edit-data-input person-edit-city-input"
@@ -101,7 +79,7 @@ class PersonInfo extends Component {
 					type="text" />
 				{this.updatePersonInfoButton()}
 				{this.changeEditStateButton(
-					this.handleEditCityClick,
+					this.onEditChangeClick.bind(this, this.state.onCityEdit, 'onCityEdit'),
 					'on-edit-city-icon',
 					'http://iconizer.net/files/DefaultIcon_ver_0.11/orig/cancel.png')}
 			</form>
@@ -109,17 +87,7 @@ class PersonInfo extends Component {
 		);
 	}
 
-	handleUpdateCity(e) {
-		e.preventDefault();
-
-		if (this.state.city) {
-			this.props.updatePersonData(this.props.personId, undefined, undefined, this.state.city)
-		}
-
-		this.setState({ onCityEdit: !this.state.onCityEdit, city: '' });
-	}
-
-	// Common configs
+	// Render helpers
 	changeEditStateButton(handleEditClickType, className, img_url) {
 		return (
 			<button
@@ -143,6 +111,7 @@ class PersonInfo extends Component {
 		);
 	}
 
+	// Common functions
 	handleDataChange(key) {
 		return function(e) {
 			let state = {};
@@ -151,6 +120,33 @@ class PersonInfo extends Component {
 		}.bind(this);
 	}
 
+	onEditChangeClick(fieldToChange, helpString) {
+		console.log(fieldToChange);
+		console.log(helpString);
+		let state = {};
+		state[helpString] = !fieldToChange;
+		console.log(state);
+		this.setState(state);
+	}
+
+	handleUpdateData() {
+		console.log();
+		return function(e) {
+			e.preventDefault();
+			if (this.state.city) {
+				this.props.updatePersonData(this.props.personId, undefined, undefined, this.state.city)
+				this.setState({ onCityEdit: !this.state.onCityEdit, city: '' });
+			}
+
+			if (this.state.name) {
+				this.props.updatePersonData(this.props.personId, undefined, this.state.name)
+				this.setState({ onNameEdit: !this.state.onNameEdit, name: '' });
+			}
+			// let state = {};
+			// state[key] = e.target.value;
+			// this.setState(state);
+		}.bind(this);
+	}
 
 	// JSX render
 	render() {
