@@ -36,7 +36,16 @@ class Skills extends Component {
 		if (this.props.access_token === localStorage.getItem('token')) {
 			return <button
 				onClick={e => this.handleDeleteSkillClick(skill_id)}
-				className="btn btn-danger">X</button>
+				className="unstiled-btn">
+				<img
+					src="http://iconizer.net/files/DefaultIcon_ver_0.11/orig/cancel.png"
+					alt="delete-skill-icon"
+					className="delete-skill-icon" />
+			</button>
+
+
+
+
 		}
 	}
 
@@ -65,8 +74,9 @@ class Skills extends Component {
 	firstSkillRender() {
 		return (
 			<li className="person-skill">
-				{this.props.skills[0].body}&nbsp;
+				{this.props.skills[0].body}
 				{this.deleteSkillFunc(this.props.skills[0].id)}
+				&nbsp;
 			</li>
 		);
 	}

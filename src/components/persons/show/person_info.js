@@ -26,7 +26,6 @@ class PersonInfo extends Component {
 
 	// Name tags render
 	personNameRender() {
-		// onClick={}
 		return (
 			<h2>
 				{this.props.name ? (this.props.name) : ('Your Name')}

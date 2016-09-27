@@ -47,7 +47,10 @@ class Person extends Component {
 
 				<div className="row person-data">
 					<div className="col-md-6">
-						<Avatar imageUrl={this.props.person.picture.url}/>
+						<Avatar
+							imageUrl={this.props.person.picture.url}
+							accessToken={this.props.person.access_token}
+							personId={this.props.params.id}/>
 					</div>
 					<div className="col-md-6">
 						<PersonInfo

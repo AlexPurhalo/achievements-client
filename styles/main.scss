@@ -16,3 +16,8 @@ html {
 }
 
 button:focus { outline:0 !important; }
+
+.unstiled-btn {
+	border: 0;
+	background: transparent;
+}
