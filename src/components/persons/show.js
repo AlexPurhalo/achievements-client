@@ -15,6 +15,7 @@ import Skills from './show/skills';
 import Avatar from './show/avatar';
 import PersonInfo from './show/person_info';
 import Achievements from './show/achievements';
+import Works from './show/works';
 
 
 // Shows information about single person
@@ -82,6 +83,10 @@ class Person extends Component {
 							</div>
 						</div>
 					</div>
+				</div>
+
+				<div className="row person-works">
+					<Works />
 				</div>
 			</div>
 		);

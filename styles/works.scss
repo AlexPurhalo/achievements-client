@@ -1,0 +1,128 @@
+.person-works {
+	margin: 1rem 0 4rem;
+}
+
+.works-title {
+	text-align: center;
+	font-size: 3.3rem;
+	letter-spacing: 3px;
+	margin: 0 0 2rem;
+}
+
+.works-list {
+	margin: 1.5rem auto 0;
+	list-style: none;
+	max-width: 1000px;
+}
+
+.single-work {
+	display: list-item;
+	margin: 2rem 0;
+}
+
+.single-work-thumbnail {
+	width: 312px;
+	height: 196px;
+}
+
+@media (max-width: 1000px) {
+	.single-work-thumbnail {
+		width: 210px;
+		height: 150px;
+	}
+}
+
+.single-work-thumbnails-pagination-section {
+	width: 313px;
+	height: 36px;
+	background: #373a3c;
+}
+
+@media (max-width: 1000px) {
+	.single-work-thumbnails-pagination-section {
+		width: 210px;
+	}
+}
+
+.single-work-thumbnails-pagination-list {
+	text-align: center;
+}
+
+.single-work-thumbnails-pagination-item {
+	border-radius: 50%;
+	width: 16px;
+	height: 16px;
+	background-color: #e9f0f5;
+	margin: 0.55rem 0.5rem 0;
+}
+
+.single-work-thumbnails-pagination-item:hover {
+	background-color: #9dcff3;
+}
+
+.single-work-thumbnails-pagination-item-active{
+	background-color: #9dcff3;
+}
+
+.single-work-title {
+	text-align: center;
+	font-size: 2.1rem;
+	margin: 0 0 0.2rem;
+}
+
+.single-work-description {
+	text-align: center;
+	height: 140px;
+	font-weight: 400;
+}
+
+@media (max-width: 1000px) {
+	.single-work-description {
+		height: 200px;
+		margin: 0 0 0.145rem;
+	}
+}
+
+.single-work-additional-info {
+	height: 36px;
+	background: #373a3c;
+	color: white;
+	font-weight: 300;
+}
+
+.single-work-additional-info-skills-list {
+	margin: 0.4rem 1.5rem 0.4rem;
+}
+
+.single-work-additional-info-skill {
+	margin: 0 0.35rem 0 0.35rem;
+	font-weight: 400;
+}
+
+.single-work-additional-info-date {
+	text-align: center;
+	margin: 0.4rem 0;
+	font-weight: 400;
+}
+
+.works-pagination {
+	margin: 0 auto;
+	max-width: 1056px;
+}
+
+.works-pagination-item {
+	margin: 0 0.4rem;
+	font-weight: 400;
+	font-size: 1.2rem;
+}
+
+.works-cont {
+	font-weight: 400;
+	font-size: 1.2rem;
+	text-align: right;
+}
+
+.change-works-page-button:hover {
+	color: #555555;
+}
+

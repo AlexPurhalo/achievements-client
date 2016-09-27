@@ -62,77 +62,73 @@ class Achievements extends Component {
 		this.setState({ textToUpdate: "", onEdit: false })
 	}
 
-	render() {
-		const actual_token = localStorage.getItem('token');
+	createAchievementForm() {
 		return (
-			<div>
-				{
-					this.props.access_token === actual_token ?
-						(
-							<form onSubmit={this.handleSubmit}>
+			<form onSubmit={this.handleSubmit}>
 								<textarea
 									className="form-control"
 									onChange={this.handleChange}
 									value={this.state.description}
 									placeholder="Enter your achievement here"type="text" />
-								<button
-									className="btn btn-default"
-									type="submit">
-									Add Achievement
-								</button>
-							</form>
-						)
-						:
-						null
-				}
+				<button
+					className="btn btn-default"
+					type="submit">
+					Add Achievement
+				</button>
+			</form>
+		);
+	}
+
+	updateAchievementForm(achievement) {
+		return (
+			<form onSubmit={this.onUpdateSubmit}>
+				<textarea
+					value={this.state.textToUpdate}
+					placeholder={achievement.description}
+					onChange={this.onUpdateChange}
+					className="form-control"/>
+				<button
+					className="btn btn-default"
+					type="submit">
+					Update
+				</button>
+			</form>
+		);
+	}
+
+	singleAchievementRender(achievement) {
+		return <li className="achievements-list-item">{achievement.description}</li>;
+	}
+
+	manageButtons(achievement) {
+		return (
+			<div>
+				<button
+					onClick={e => this.deleteClick(achievement.id)}
+					className="btn btn-danger">
+					Delete
+				</button>
+				<button
+					onClick={e => this.editClick(achievement.id)}
+					className="btn btn-default">
+					Edit
+				</button>
+			</div>
+		);
+	}
+
+	render() {
+		const actual_token = localStorage.getItem('token');
+		return (
+			<div>
+				{this.props.access_token === actual_token ? (this.createAchievementForm()) : null}
 				<ul className="achievement-list">
 					{this.props.achievements.map(achievement => {
-
 						return (
 							<div key={achievement.id}>
-								{/*<div className="single-achievement">{achievement.description}</div>*/}
-								{
-									this.state.onEdit && achievement.id === this.state.choicedItem
-										?
-										(
-											<form onSubmit={this.onUpdateSubmit}>
-												<textarea
-													value={this.state.textToUpdate}
-													placeholder={achievement.description}
-													onChange={this.onUpdateChange}
-													className="form-control"/>
-												<button
-													className="btn btn-default"
-													type="submit">
-													Update
-												</button>
-											</form>
-										)
-										:
-										(
-											<li className="achievements-list-item">{achievement.description}</li>
-										)
-								}
-								{
-									this.props.access_token === actual_token
-										?
-										(
-											<div>
-												<button
-													onClick={e => this.deleteClick(achievement.id)}
-													className="btn btn-danger">
-													Delete
-												</button>
-												<button
-													onClick={e => this.editClick(achievement.id)}
-													className="btn btn-default">
-													Edit
-												</button>
-											</div>
-										)
-										:
-										null
-								}
+								{this.state.onEdit && achievement.id === this.state.choicedItem ?
+									(this.updateAchievementForm(achievement)) : (this.singleAchievementRender(achievement))}
+								{this.props.access_token === actual_token ? (this.manageButtons(achievement)) : null}
 							</div>
 						);
 					})}
