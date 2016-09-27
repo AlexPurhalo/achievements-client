@@ -1,0 +1,33 @@
+.person-achievements {
+	margin: 4.5rem;
+}
+
+.person-achievements .person-achievements-title {
+	margin: 2rem;
+	font-size: 3.2rem;
+	letter-spacing: 3px;
+	text-align: center;
+}
+
+@media (max-width: 670px) {
+	.person-achievements .person-achievements-title {
+		font-size: 2.5rem;
+	}
+}
+
+@media (max-width: 400px) {
+	.person-achievements .person-achievements-title {
+		font-size: 1.5rem;
+	}
+}
+
+.person-achievements .achievement-list {
+	text-align: left;
+	margin: 0 4rem;
+}
+
+.person-achievements .achievement-list .achievements-list-item {
+	font-size: 1.3rem;
+	margin: 0.7rem 0;
+	font-weight: 400;
+}

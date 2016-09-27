@@ -1,5 +1,18 @@
-.example {
-	h1 {
-		color: green;
-	}
+@import '../node_modules/normalize.css/normalize.css';
+@import './variables.scss';
+@import './profile.scss';
+@import './person_info.scss';
+@import './skills.scss';
+@import './achievements.scss';
+@import './avatar.scss';
+
+
+html {
+	color: #222;
+	font-weight: 100;
+	font-size: 1em; /* ~16px; */
+	font-family: $font-family-base;
+	line-height: 1.375; /* ~22px */
 }
+
+button:focus { outline:0 !important; }
